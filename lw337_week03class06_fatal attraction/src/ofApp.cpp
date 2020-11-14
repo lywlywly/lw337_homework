@@ -1,6 +1,7 @@
 #include "ofApp.h"
 
 //--------------------------------------------------------------
+//adapted from sample code attraction in class
 void ofApp::setup(){
     
     ofBackground(0);

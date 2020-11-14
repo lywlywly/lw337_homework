@@ -1,5 +1,6 @@
 #include "ofApp.h"
 
+//adapted from sample code particle system
 //--------------------------------------------------------------
 void ofApp::setup(){
     
