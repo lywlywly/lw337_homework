@@ -38,7 +38,7 @@ void ofApp::setup()
 	soundPlayer.load("Aurelion Sol,the Star Forger.mp3");
 	soundPlayer.setLoop(true);
 	soundPlayer.play();
-	ofBackground(255);
+	ofBackground(0);
 	ofSetBackgroundAuto(false);
 
 	for (int i = 0; i < 5000; i++)
@@ -126,7 +126,7 @@ void ofApp::keyPressed(int key)
 	{
 		bornTime = ofGetElapsedTimef();
 		mode = 1;
-		ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+		ofBackground(0);
 		soundPlayer.stop();
 		soundPlayer.load("Aurelion Sol,the Star Forger.mp3");
 
@@ -144,7 +144,7 @@ void ofApp::keyPressed(int key)
 	{
 		bornTime = ofGetElapsedTimef();
 		mode = 2;
-		ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+		ofBackground(0);
 		soundPlayer.stop();
 		soundPlayer.load("Stepping Along.mp3");
 
@@ -162,7 +162,7 @@ void ofApp::keyPressed(int key)
 	{
 		bornTime = ofGetElapsedTimef();
 		mode = 3;
-		ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+		ofBackground(0);
 		soundPlayer.stop();
 		soundPlayer.load("Horner- For The Love Of A Princess.mp3");
 
