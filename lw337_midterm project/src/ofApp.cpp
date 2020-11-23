@@ -5,7 +5,7 @@ Star::Star() //adapted from week 02 class 04 sample code "followers"
 	offset = ofRandom(-50, 50);
 }
 
-void Star::update(ofVec2f target) 
+void Star::update(ofVec2f target)
 {
 	pos = pos * (1. - lerp) + target * lerp; // move "lerp" % to target
 	ofVec3f direction = target - pos;
@@ -13,7 +13,7 @@ void Star::update(ofVec2f target)
 	angle = ofRadToDeg(radians);	// convert radians to degrees
 }
 
-void Star::draw() 
+void Star::draw()
 {
 	// triangle
 	ofVec3f p1 = ofVec3f(0, offset);	// front
@@ -31,7 +31,7 @@ void Star::draw()
 }
 
 
-void ofApp::setup() 
+void ofApp::setup()
 {
 	bornTime = ofGetElapsedTimef();
 	mode = 1;
@@ -41,7 +41,7 @@ void ofApp::setup()
 	ofBackground(255);
 	ofSetBackgroundAuto(false);
 
-	for (int i = 0; i < 5000; i++) 
+	for (int i = 0; i < 5000; i++)
 	{
 		Star Star;
 		Star.pos = ofVec2f(0);
@@ -52,7 +52,7 @@ void ofApp::setup()
 		Stars.push_back(Star);
 	}
 
-	for (int i = 0; i < 5000; i++) 
+	for (int i = 0; i < 5000; i++)
 	{
 
 		Star Star;
@@ -65,14 +65,14 @@ void ofApp::setup()
 }
 
 //--------------------------------------------------------------
-void ofApp::update() 
+void ofApp::update()
 {
 	ofVec2f target;
 
 	if (isAuto)
 	{
 		target.set(mouseX, mouseY);
-		for (auto& Star : Stars) 
+		for (auto& Star : Stars)
 			Star.update(target);
 	}
 	else
@@ -81,23 +81,23 @@ void ofApp::update()
 		ofVec2f oldTarget;
 		if (aliveTime > 60)
 			if (mode == 1)
-				oldTarget.set(512 + 900 * cos(0.7*(aliveTime - 60) + 1.07), 384 + 650 * sin(0.5*(aliveTime - 60)));
+				oldTarget.set(512 + 512 * cos(.2*aliveTime) + 900 * cos(0.7*(aliveTime - 60) + 1.07), 384 + 384 * sin(.2*aliveTime) + 650 * sin(0.5*(aliveTime - 60)));
 			else if (mode == 2)
-				oldTarget.set(512 + 900 * cos(1 * (aliveTime - 60) + 1.07), 384 + 650 * sin(0.63*(aliveTime - 60)));
+				oldTarget.set(512 + 650 * cos(.2*aliveTime) + 900 * cos(1.4 * (aliveTime - 60) + 1.07), 384 + 450 * sin(.2*aliveTime) + 650 * sin(1*(aliveTime - 60)));
 			else
-				oldTarget.set(512 + 900 * cos(0.35 * (aliveTime - 60) + 1.07), 384 + 650 * sin(0.25*(aliveTime - 60)));
+				oldTarget.set(512 + 512 * cos(.2*aliveTime) + 900 * cos(0.35 * (aliveTime - 60) + 1.07), 384 + 384 * sin(.2*aliveTime) + 650 * sin(0.25*(aliveTime - 60)));
 
 
 		if (mode == 1)
-			target.set(512 + 900 * cos(0.7*aliveTime + 1.07), 384 + 650 * sin(0.5*aliveTime));
+			target.set(512 + 650 * cos(.2*aliveTime) + 900 * cos(0.7*aliveTime + 1.07), 384 + 450 * sin(.2*aliveTime) + 650 * sin(0.5*aliveTime));
 		else if (mode == 2)
-			target.set(512 + 900 * cos(1 * aliveTime + 1.07), 384 + 650 * sin(0.63*aliveTime));
+			target.set(512 + 512 * cos(.3*aliveTime) + 1000 * cos(1.5*aliveTime + 1.07), 384 + 384 * sin(.3*aliveTime) + 750 * sin(1.15*aliveTime));
 		else
-			target.set(512 + 900 * cos(0.35 * aliveTime + 1.07), 384 + 650 * sin(0.25*ofGetElapsedTimef()));
+			target.set(512 + 650 * cos(.2*aliveTime) + 900 * cos(0.35 * aliveTime + 1.07), 384 + 450 * sin(.2*aliveTime) + 650 * sin(0.25*ofGetElapsedTimef()));
 
 
 
-		for (auto& Star : Stars) 
+		for (auto& Star : Stars)
 			Star.update(target);
 
 
@@ -107,9 +107,9 @@ void ofApp::update()
 }
 
 //--------------------------------------------------------------
-void ofApp::draw() 
+void ofApp::draw()
 {
-	for (auto& Star : Stars) 
+	for (auto& Star : Stars)
 		Star.draw();
 
 	for (auto& Star : eraseStars)
@@ -117,7 +117,7 @@ void ofApp::draw()
 }
 
 //--------------------------------------------------------------
-void ofApp::keyPressed(int key) 
+void ofApp::keyPressed(int key)
 {
 	if (key == 'a')//toggle auto mode;
 		isAuto = !isAuto;
